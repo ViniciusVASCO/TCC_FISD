@@ -1,0 +1,640 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    min-height: 100vh;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+body.high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast p,
+body.high-contrast span,
+body.high-contrast strong {
+    color: #fff !important;
+}
+
+body.high-contrast .presentation-card {
+    background: #333 !important;
+    border-color: #fff !important;
+}
+
+body.high-contrast .slide {
+    background: #444 !important;
+    border: 2px solid #fff !important;
+}
+
+body.high-contrast .slide-example {
+    background: #222 !important;
+    border-left: 4px solid yellow !important;
+}
+
+body.high-contrast #menu-overlay .menu-panel {
+    background: #000 !important;
+    border-right: 2px solid white !important;
+}
+
+body.high-contrast #menu-overlay button,
+body.high-contrast #menu-overlay a {
+    background: #111 !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+}
+
+body.high-contrast button,
+body.high-contrast .btn,
+body.high-contrast .slide-btn,
+body.high-contrast .menu-button,
+body.high-contrast .btn-desafio {
+    background: #000 !important;
+    color: #fff !important;
+    border: 2px solid yellow !important;
+}
+
+body.high-contrast button:hover {
+    background: #222 !important;
+}
+
+body.high-contrast .slide-indicator {
+    background: #555 !important;
+    border: 2px solid #fff !important;
+}
+
+body.high-contrast .slide-indicator.active {
+    background: yellow !important;
+    border-color: #fff !important;
+}
+
+body.high-contrast .bloco.desafio-diario {
+    background: #222 !important;
+    border: 2px solid #fff !important;
+}
+
+body.high-contrast #mensagem-final {
+    color: yellow !important;
+}
+
+body.high-contrast .bloco {
+    background: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+body.high-contrast .conquista {
+    background: #000 !important;
+    border: 2px solid yellow !important;
+}
+
+body.high-contrast .conquista .nome,
+body.high-contrast .conquista .icone {
+    color: #fff !important;
+}
+
+body.high-contrast .conquista.bloqueado {
+    background: #222 !important;
+    border-color: #888 !important;
+    opacity: 1 !important;
+}
+
+body.high-contrast * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+body.font-large {
+    font-size: 18px;
+}
+
+body.font-extra-large {
+    font-size: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+
+.header {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.header-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.header-content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.menu-content {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 350px;
+    height: 100%;
+    padding: 2rem;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.menu-overlay.active .menu-content {
+    transform: translateX(0);
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-header h2 {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.menu-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-section:last-child {
+    border-bottom: none;
+}
+
+.menu-section h3 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.menu-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-link i {
+    margin-right: 0.75rem;
+    width: 1rem;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-button i {
+    margin-right: 0.75rem;
+    width: 1rem;
+}
+
+.presentation-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 2rem 1rem;
+}
+
+.slide-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slide-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.slide-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 2rem 2rem;
+}
+
+.slide-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slide-indicator.active {
+    background: white;
+}
+
+.slide-content {
+    position: relative;
+    min-height: 400px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.slide.slide-0 {
+    background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
+    border-radius: 0.75rem;
+    color: white;
+}
+
+.slide.slide-1 {
+    background: linear-gradient(135deg, #ef4444 0%, #ec4899 100%);
+    border-radius: 0.75rem;
+    color: white;
+}
+
+.slide h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.slide-description {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.slide-example {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.slide-example p {
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    text-align: center;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.nav-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.nav-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.nav-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .menu-content {
+        width: 100%;
+    }
+
+    .slide-controls {
+        padding: 1rem 1rem 0.5rem;
+    }
+
+    .slide {
+        padding: 1.5rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide.active {
+    animation: fadeIn 0.5s ease;
+}
+
+.btn-sound {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sound::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-sound:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+
+#games-selection {
+    margin-bottom: 3rem;
+}
+
+#game-container {
+    margin-top: 2rem;
+}
+
+
+.score-panel {
+    color: white;
+    background: rgba(255,255,255,0.1);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.podcast-box {
+  background: #0f172a;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.podcast-box audio {
+  width: 100%;
+  max-width: 320px;
+  filter: invert(1) saturate(0.8);
+}
+
+.btn-saiba-mais {
+  display: inline-block;
+  background: #471761;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 20px;
+}
+
+.btn-saiba-mais:hover {
+  background: #334155;
+  transform: scale(1.03);
+}
+
+
+.btn-assistir {
+    display: inline-block;
+    background: #471761;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px; 
+    cursor: pointer;
+}
+
+.btn-assistir:hover {
+    background: #334155;
+    transform: scale(1.03);
+}
+
+.modal {
+    display: none;
+    margin-top: 15px;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 10px;
+}
+
+.footer-autorias {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(135deg, #0f172a 10%, #581c87 100%#0f172a 10%);
+    color: white;
+    padding: 20px 20px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-container h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-container p,
+.footer-container ul {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.footer-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-container ul {
+        padding-left: 0;
+        list-style-position: inside;
+    }
+}
+
+
+
+

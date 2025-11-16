@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador da 3ª Lei de Newton</title>
+<link rel="stylesheet" href="CSS/style.css">
+<link rel="stylesheet" href="CSS/componentes.css">
+<link rel="stylesheet" href="CSS/simulador.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="simulator-app">
+  <header class="header">
+    <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-content">
+      <h1>3ª Lei de Newton - Ação e Reação</h1>
+      <p>Observe como as forças de ação e reação atuam durante a colisão</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="simulator-layout">
+      <div class="simulation-section">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Área de Simulação</h2>
+            <p class="card-description">As bolas colidem demonstrando ação e reação</p>
+          </div>
+          <div class="card-content">
+            <div id="collision-track" class="simulation-track">
+              <div id="force-arrow1" class="force-arrow"> → </div>
+              <div id="force-arrow2" class="force-arrow"> ← </div>
+
+              <div id="ball1" class="ball blue">1.0</div>
+              <div id="ball2" class="ball green">1.0</div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card">
+                <h4>Objeto 1</h4>
+                <p>Velocidade: <span id="vel1">0.00</span> m/s</p>
+                <p>Massa: <span id="mass1">1.0</span> kg</p>
+                <p>Momento: <span id="mom1">0.00</span> kg⋅m/s</p>
+              </div>
+              <div class="info-card">
+                <h4>Objeto 2</h4>
+                <p>Velocidade: <span id="vel2">0.00</span> m/s</p>
+                <p>Massa: <span id="mass2">1.0</span> kg</p>
+                <p>Momento: <span id="mom2">0.00</span> kg⋅m/s</p>
+              </div>
+            </div>
+
+            <div class="controls">
+              <button id="start" class="btn btn-success"><i class="fas fa-play"></i> Iniciar</button>
+              <button id="apply-force" class="btn btn-primary"><i class="fas fa-bolt"></i> Aplicar Força</button>
+              <button id="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-section">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Configurações</h3>
+          </div>
+          <div class="card-content">
+            <div class="slider-wrapper">
+              <label>Atrito: <span id="friction-value">0.10</span></label>
+              <input type="range" id="friction-slider" min="0" max="0.5" step="0.01" value="0.1">
+            </div>
+            <div class="slider-wrapper">
+              <label>Intensidade da Força: <span id="force-value">0.0</span></label>
+              <input type="range" id="force-slider" min="-5" max="5" step="0.1" value="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">3ª Lei de Newton</h3>
+          </div>
+          <div class="card-content">
+            <p class="law-description">
+              <strong>Lei da Ação e Reação:</strong> Para toda força de ação, existe uma força de reação de <strong>mesma intensidade, mesma direção e sentido oposto</strong>.
+            </p>
+            <ul class="law-points">
+              <li>As forças sempre aparecem em pares (ação e reação)</li>
+              <li>Possuem mesma intensidade</li>
+              <li>Possuem mesma direção, porém sentidos opostos</li>
+              <li>Atuam em corpos diferentes</li>
+              <li>Há conservação do momento linear</li>
+            </ul>
+            <div class="total-momentum">
+              <strong>Momento total:</strong> <span id="total-momentum">0.00</span> kg⋅m/s
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="JS/terceiralei.js"></script>
+</body>
+</html>

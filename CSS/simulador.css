@@ -1,0 +1,572 @@
+.simulator-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .simulator-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.simulation-track {
+    position: relative;
+    height: 8rem;
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    border-radius: 0.75rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.reference-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.reference-line {
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.reference-line:last-child {
+    border-right: none;
+}
+
+.ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    background: #3b82f6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 75ms ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ball.running {
+    background: #fbbf24;
+    box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+}
+
+.ball::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: #ef4444;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.ball.has-velocity::after {
+    opacity: 1;
+}
+
+.force-indicator {
+    position: absolute;
+    top: 0.5rem;
+    background: #ef4444;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    animation: pulse 1s infinite;
+    z-index: 10;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.info-label {
+    color: white;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.info-value.velocity {
+    color: #3b82f6;
+}
+
+.info-value.position {
+    color: #10b981;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.controls .btn {
+    min-width: 100px;
+}
+
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.slider-container {
+    margin-bottom: 1.5rem;
+}
+
+.slider-label {
+    display: block;
+    color: white;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+
+.law-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.law-points {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.law-points p {
+    margin-bottom: 0.5rem;
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.quiz-info h2 {
+    color: white;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+#score-display {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+}
+
+.question-container {
+    background: rgba(147, 51, 234, 0.2);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#question-text {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.answers-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.answer-option {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.answer-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.answer-option.selected {
+    border-color: #9333ea;
+    background: rgba(147, 51, 234, 0.3);
+    color: white;
+}
+
+.quiz-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.results-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.results-emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.results-container h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.final-score {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.final-score.score-excellent {
+    color: #10b981;
+}
+
+.final-score.score-good {
+    color: #fbbf24;
+}
+
+.final-score.score-needs-improvement {
+    color: #ef4444;
+}
+
+.results-message {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.game-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.game-card h3 {
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.game-card p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.game-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-law {
+    font-size: 0.875rem;
+    color: #a855f7;
+    font-weight: 500;
+}
+
+.game-area {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 300px;
+    position: relative;
+}
+
+.game-instructions {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.game-instructions h3 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.game-instructions p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .quiz-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .results-actions .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+#memoria-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 120px);
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.memory-card {
+    width: 120px;
+    height: 160px;
+    perspective: 1000px;
+}
+
+.memory-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid #d946ef;
+}
+
+.memory-card-front,
+.memory-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 12px;
+
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.memory-card-front {
+    background: #9333ea;
+    color: white;
+}
+
+.memory-card-back {
+    background: #ff00ff;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .memory-card-inner {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+
+.forca-letra {
+    width: 40px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background: rgba(147, 51, 234, 0.5);
+    border: 2px solid rgba(241, 91, 181, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.forca-btn {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    background: rgba(147, 51, 234, 0.5);
+    border: 2px solid rgba(241, 91, 181, 0.8);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.forca-btn:hover {
+    background: rgba(147, 51, 234, 0.8);
+}
+
+.forca-btn.correct {
+    background: #1abc9c;
+    border-color: #16a085;
+    color: white;
+}
+
+.forca-btn.wrong {
+    background: #e74c3c;
+    border-color: #c0392b;
+    color: white;
+}
+
+.simulation-track {
+    position: relative;
+    height: 100px;
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    border-radius: 0.75rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+}
+
+.ball {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.ball.blue { background: #3b82f6; }
+.ball.green { background: #10b981; }
+
+.force-arrow {
+  position: absolute;
+  top: 10%;
+  font-size: 2rem;
+  color: red;
+  opacity: 0;
+  transition: left 0.05s, opacity 0.1s;
+  z-index: 10;
+  pointer-events: none; /
+}

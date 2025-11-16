@@ -1,0 +1,131 @@
+/* Container do quiz */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Progresso */
+.progress-bar {
+  width: 100%;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  height: 8px;
+  margin-top: 10px;
+}
+
+.progress {
+  background: #28a6c6;
+  height: 8px;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.question {
+  background: rgba(90, 14, 122, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.question h2 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.option-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 2px solid rgba(217, 139, 250, 0.2);
+  background: rgba(217, 139, 250, 0.2);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.option-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.option-btn.selected {
+  border-color: #6bb9e3;
+  color:white;
+}
+
+.next-btn {
+  background: #7c3aed;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  float: right;
+}
+
+.next-btn:disabled {
+  background: #9333ea;
+  cursor: not-allowed;
+}
+
+.result {
+  text-align: center;
+  padding: 20px;
+}
+
+.result h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.result p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.result .score-high {
+  color: #16a34a;
+}
+
+.result .score-medium {
+  color: #eab308;
+}
+
+.result .score-low {
+  color: #dc2626;
+}
+
+.result .btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.result button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-retry {
+  background: #7c3aed;
+}
+
+.btn-home {
+  background: rgba(255,255,255,0.2);
+}

@@ -1,0 +1,134 @@
+.blocos-conquista-desafio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.bloco {
+  background: rgba(138, 173, 255, 0.705);
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 20px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 460px;
+  transition: transform 0.3s ease;
+}
+
+.bloco:hover {
+  transform: translateY(-4px);
+}
+.desafio-diario h3 {
+  margin-bottom: 10px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.descricao-desafio {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.recompensa {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+.conquista.bloqueado {
+  background: rgba(45, 17, 17, 0.3);
+  border: 1px solid rgba(150, 150, 150, 0.3);
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.conquista.bloqueado:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.conquista.bloqueado .icone {
+  animation: none;
+  color: #888;
+}
+
+.conquista-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+.conquista {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(135deg, rgb(115, 196, 225), rgb(138, 100, 221));
+  border: 1px solid rgb(109, 72, 211);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.conquista .icone {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  animation: bounce 2s infinite;
+}
+
+.conquista .nome {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.btn-desafio {
+  background: linear-gradient(135deg, #a16acb, #d3acfa);
+  color: white;
+  border: none;
+  margin-top: 18px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.btn-desafio:hover {
+  background: linear-gradient(135deg, #a16acb, #d3acfa);
+}
+
+.btn-desafio.desafio-concluido,
+.btn-desafio.desafio-concluido:hover {
+  background: #5c4667;
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .blocos-conquista-desafio {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bloco {
+    width: 100%;
+    max-width: 95%;
+  }
+}

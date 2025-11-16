@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leis de Newton - Simuladores Interativos</title>
+    <meta name="description" content="Explore as Leis de Newton através de simuladores interativos e apresentações educativas">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
+    <link rel="stylesheet" href="CSS/progressbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div id="menu-overlay" class="menu-overlay">
+            <div class="menu-content">
+                <div class="menu-header">
+                    <h2>Menu de Navegação</h2>
+                    <button id="close-menu" class="close-btn">&times;</button>
+                </div>
+                 <div class="menu-section">
+                        <h3>Leis de Newton</h3>
+                        <a href="1lei.html" class="menu-link">
+                            <i class="fas fa-graduation-cap"></i>
+                            Estudos sobre a 1ª Lei
+                        </a>
+                        <a href="3lei.html" class="menu-link">
+                            <i class="fas fa-graduation-cap"></i>
+                            Estudos sobre a 3ª Lei
+                        </a>
+                    </div>
+                <div class="menu-sections">
+                    <div class="menu-section">
+                        <h3>Simuladores</h3>
+                        <a href="simulador1.html" class="menu-link">
+                            <i class="fas fa-play"></i>
+                            1ª Lei - Inércia
+                        </a>
+                        <a href="simulador3.html" class="menu-link">
+                            <i class="fas fa-play"></i>
+                            3ª Lei - Ação e Reação
+                        </a>
+                    </div>
+
+                    <div class="menu-section">
+                        <h3>Atividades</h3>
+                        <a href="quizzes.html" class="menu-link">
+                            <i class="fas fa-question-circle"></i>
+                            Quizzes
+                        </a>
+                        <a href="brincadeiras.html" class="menu-link">
+                            <i class="fas fa-gamepad"></i>
+                            Brincadeiras
+                        </a>
+                    </div>
+                    <div class="menu-section">
+                        <h3><i class="fas fa-microphone"></i> Podcast</h3>
+                       <div class="podcast-box">
+                        <audio controls>
+                            <source src="audio/podcast.mp4" type="audio/mp4">
+                        </audio>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <h3><i class="fas fa-eye"></i> Acessibilidade</h3>
+                        <button id="toggle-contrast" class="menu-button">
+                            <i class="fas fa-palette"></i>
+                            <span id="contrast-text">Ativar Alto Contraste</span>
+                        </button>
+                        <button id="change-font-size" class="menu-button">
+                            <i class="fas fa-font"></i>
+                            <span id="font-size-text">Fonte: Normal</span>
+                        </button>
+                    </div>
+
+                    <div class="menu-section">
+                        <h3><i class="fas fa-volume-up"></i> Audiovisual</h3>
+                        <button id="toggle-sound" class="menu-button">
+                            <i id="sound-icon" class="fas fa-volume-up"></i>
+                            <span id="sound-text">Som Ativado</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-container">
+            <header class="header">
+                <button id="menu-btn" class="menu-toggle" aria-label="Abrir menu de navegação">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-content">
+                    <h1>Leis de Newton</h1>
+                    <p>Explore os fundamentos da mecânica clássica através de apresentações interativas</p>
+                </div>
+            </header>
+                <div class="blocos-conquista-desafio">
+                    <div class="bloco conquistas">
+                        <h3><i class="fas fa-medal"></i> Conquistas</h3>
+                        <div id="conquista-lista" class="conquista-lista">
+                        </div>
+                    </div>
+                    <div class="bloco desafio-diario">
+                        <h3><i class="fas fa-calendar-day"></i> Desafio Diário</h3>
+                        <p class="descricao-desafio"> Explore o site com a sua critatividade e foco!</p>
+                        <p id="mensagem-final"> Parabéns por completar os desafios! Aguarde as próximas atualizações.</p>
+
+                        <button id="btn-desafio" class="btn-desafio">Marcar como Completo</button>
+                    </div>
+                </div>
+            </section>
+            <div class="container">
+                <div class="presentation-card">
+                    <div class="slide-controls">
+                        <button id="prev-slide" class="slide-btn" aria-label="Slide anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="next-slide" class="slide-btn" aria-label="Próximo slide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="slide-indicators">
+                        <button class="slide-indicator active" data-slide="0" aria-label="Ir para slide 1"></button>
+                        <button class="slide-indicator" data-slide="1" aria-label="Ir para slide 2"></button>
+                    </div>
+
+                    <div class="slide-content">
+                        <div class="slide active" data-slide="0">
+                            <h2>1ª Lei de Newton - Lei da Inércia</h2>
+                            <p class="slide-description"></p>
+                            <div class="slide-example">
+                                <p><strong>Exemplo:</strong> Quando você está em um carro e ele freia bruscamente, seu corpo continua se movendo para frente devido à inércia.</p>
+                            </div>
+                        </div>
+
+                            <div class="slide" data-slide="1">
+                            <h2>3ª Lei de Newton - Ação e Reação</h2>
+                            <p class="slide-description"></p>
+                            <div class="slide-example">
+                                <p><strong>Exemplo:</strong> Quando você caminha, empurra o chão para trás e o chão empurra você para frente com a mesma força.</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              <footer class="footer-autorias">
+                <div class="footer-container">
+                    <div class="autor">
+                        <h2>Autorias</h2>
+                        <p>
+                            <h4>Vinicius B.B Angelo</h4>Responsável pelo esenvolvimento do site,
+                            suas funções e implementações de conteúdo.
+                            <h4>João Marceu</h4>Responsavel pelo artigo do projeto e pesquisas.
+                            <h4>Fabiane da Silva</h4>Professora responsavel pela parte teórica, fundamentos e validações.
+                            <h4>Roberto T. Alves</h4>Orientador do projeto.
+                        </p>
+                    </div>
+                    <div class="referencia">
+                        <h2>Referências</h2>
+                        <ul>
+                            <li>DETERDING, Sebastian; DIXON, Dan; KHALED, Rilla; NACKE, Lennart.<br>
+                                From game design elements to gamefulness: defining “gamification”.<br>
+                                Proceedings of the 15th International Academic MindTrek Conference: <br>
+                                Envisioning future media environments, p. 9– 15, 2011.</li>
+                            <li>BRASIL. Ministério da Educação. Base Nacional Comum Curricular. Brasília: MEC, 2017.</li>
+                            <li>HALLIDAY, David; RESNICK, Robert; WALKER, Jearl. <br>
+                                Fundamentos de Física. 10. ed. Rio de Janeiro: LTC, 2014.</li>
+                        </ul>
+                    </div>
+                </div>
+                 </footer>
+            </div>
+        </div>
+    </div>
+    <script src="JS/main.js"></script>
+    <script src="JS/desafiodiario.js"></script>
+    <script src="JS/conquistas.js"></script>
+</body>
+</html>

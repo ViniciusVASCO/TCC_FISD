@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="CSS/style.css">
+<link rel="stylesheet" href="CSS/componentes.css">
+<link rel="stylesheet" href="CSS/simulador.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<title>1ª Lei de Newton – Inércia</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    color: white;
+    line-height: 1.6;
+    padding: 2rem 0;
+}
+
+.header {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    margin-left: .5rem;
+}
+
+.page-container {
+    max-width: 1000px;
+    margin: 3.5rem auto 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid #5f0ca3;
+    border-radius: 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.6rem !important;
+    margin: 2rem 0 1rem !important;
+    border-left: 5px solid #ffffff !important;
+    padding-left: 0.40rem !important;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+blockquote {
+    margin: 2rem 0;
+    padding: 1.2rem;
+    border-left: 5px solid rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.25);
+    border-radius: 0.5rem;
+    font-style: italic;
+}
+
+img {
+    width: 100%;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+img.inercia-gif {
+    width: 90% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+}
+
+img.quadrinhos {
+    width: auto !important;
+    max-width: 700px !important;
+    display: block;
+    margin: 1rem auto;
+}
+.section-card {
+    background: rgba(0,0,0,0.25);
+    padding: 1.5rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</header>
+
+<div class="page-container">
+
+    <h1>1ª Lei de Newton – Princípio da Inércia</h1>
+
+    <h2>O que é Inércia?</h2>
+    <p>A inércia é a tendência que todos os corpos possuem de manter o seu estado atual. Se estiver parado, permanece parado. Se estiver em movimento, permanece em movimento retílineo uniforme, desde que nenhuma força atue sobre ele.</p>
+    <img class="inercia-gif" src="IMG/inercia.gif" alt="Exemplo de inércia com carro">
+
+    <p><strong>Exemplo:</strong> Quando um carro freia de repente, o corpo das pessoas tende a continuar indo para frente. Isso ocorre por causa da inércia.</p>
+
+    <h2>Linha do Tempo e pensadores que contribuíram para o conceito</h2>
+
+    <div class="section-card">
+        <img src="IMG/linha_do_tempo.png" alt="Linha do tempo da evolução do conceito de inércia">
+    </div>
+        <a href="pdfs/primeira-lei.pdf" target="_blank" class="btn-saiba-mais">
+        Saiba Mais
+        </a>
+    <h2>Desenvolvimento Teórico</h2>
+    <p>
+        Na antiguidade, Aristóteles acreditava que um objeto em movimento só continuava se uma força estivesse atuando sobre ele o tempo todo.
+        Durante a Idade Média, Jean Buridan propôs a teoria do “ímpeto”, afirmando que o movimento continuava porque o objeto tinha recebido um impulso.
+        Galileu foi o primeiro a sugerir que, sem atrito, um corpo em movimento continuaria para sempre.
+        Descartes aperfeiçoou a ideia dizendo que o movimento tende a ser conservado.
+        Por fim, Newton reuniu todo o conhecimento e formulou o conceito moderno da inércia:
+    </p>
+
+    <blockquote>
+        “Todo corpo permanece em seu estado de repouso ou de movimento retilíneo uniforme,
+        a menos que seja obrigado a mudar esse estado por forças aplicadas sobre ele.”
+        — Isaac Newton
+    </blockquote>
+
+    <h2>História em Quadrinhos</h2>
+
+    <div class="section-card">
+        <img class="quadrinhos" src="IMG/quadrinhos_inercia.png" alt="História em quadrinhos explicando inércia">
+    </div>
+
+</div>
+
+</body>
+</html>
