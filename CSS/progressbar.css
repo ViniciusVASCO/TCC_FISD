@@ -28,9 +28,9 @@
 }
 
 .descricao-desafio {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .recompensa {
@@ -120,6 +120,18 @@
   box-shadow: none;
   pointer-events: none;
 }
+
+.btn-desafio.desafio-hoje,
+.btn-desafio.desafio-hoje:hover {
+  background: rgba(45, 17, 17, 0.3);
+  border: 1px solid rgba(150, 150, 150, 0.3);
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
 
 @media (max-width: 768px) {
   .blocos-conquista-desafio {

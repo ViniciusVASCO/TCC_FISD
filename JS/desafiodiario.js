@@ -9,10 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 3, nome: "Explorador", icone: "🚀", descricao: "Terceiro desafio diário concluído", desbloqueado: false },
   ];
 
-
   let conquistasSalvas = JSON.parse(localStorage.getItem("conquistasDiarias")) || conquistas;
   let ultimaData = localStorage.getItem("ultimaConclusao");
-
 
   function renderConquistas() {
     lista.innerHTML = "";
@@ -28,58 +26,64 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function verificarConclusaoTotal() {
-    const concluidas = conquistasSalvas.filter(c => c.desbloqueado).length;
+  function atualizarBotao() {
+  const concluidas = conquistasSalvas.filter(c => c.desbloqueado).length;
+  const hoje = new Date().toISOString().split("T")[0];
 
-    if (concluidas === 3) {
-        btnDesafio.disabled = true;
-        btnDesafio.classList.add("desafio-concluido");
-        btnDesafio.textContent = "todos os desafios foram completos!";
+  if (concluidas === conquistasSalvas.length) {
+    btnDesafio.disabled = true;
+    btnDesafio.classList.add("desafio-concluido");
+    btnDesafio.classList.remove("desafio-hoje");
+    btnDesafio.textContent = "Todos os desafios foram completos!";
+    msgFinal.style.display = "block";
+    document.querySelector(".descricao-desafio").style.display = "none";
+    document.querySelector(".recompensa").style.display = "none";
+    return;
+  }
 
-        msgFinal.style.display = "block";
-        document.querySelector(".descricao-desafio").style.display = "none";
-        document.querySelector(".recompensa").style.display = "none";
-    } else {
-        btnDesafio.disabled = false;
-        btnDesafio.classList.remove("desafio-concluido");
-        btnDesafio.textContent = "Completar Desafio";
-        msgFinal.style.display = "none";
-    }
+  if (ultimaData === hoje) {
+    btnDesafio.disabled = true;
+    btnDesafio.classList.add("desafio-hoje");
+    btnDesafio.classList.remove("desafio-concluido");
+    btnDesafio.textContent = "Desafio do dia concluído!";
+    msgFinal.style.display = "none";
+    return;
+  }
+
+  btnDesafio.disabled = false;
+  btnDesafio.classList.remove("desafio-hoje", "desafio-concluido");
+  btnDesafio.textContent = "Completar Desafio";
+  msgFinal.style.display = "none";
 }
 
- function completarDesafio() {
+  function completarDesafio() {
     const hoje = new Date().toISOString().split("T")[0];
 
-    if (ultimaData === hoje) return;
+    if (ultimaData === hoje) {
+      renderConquistas();
+      atualizarBotao();
+      return;
+    }
 
-    const proxima = conquistasSalvas.find(c => !c.desbloqueado);
-    if (proxima) proxima.desbloqueado = true;
+      if (proxima) {
+      proxima.desbloqueado = true;
+      Soltarconfete();
+    }
+
+    const todasConcluidas = conquistasSalvas.every(c => c.desbloqueado);
+    if (todasConcluidas) {
+      Soltarconfete();
+    }
 
     ultimaData = hoje;
     localStorage.setItem("ultimaConclusao", ultimaData);
     localStorage.setItem("conquistasDiarias", JSON.stringify(conquistasSalvas));
 
-    soltarConfetes();
-    settings.playCelebrationSound();
-
     renderConquistas();
-    verificarConclusaoTotal();
-}
-
-  function desativarBotao() {
-    btnDesafio.disabled = true;
-    btnDesafio.classList.add("desafio-concluido");
-    btnDesafio.textContent = "Desafio Concluído ✅";
+    atualizarBotao();
   }
 
   renderConquistas();
-
-  const hoje = new Date().toISOString().split("T")[0];
-
-  if (ultimaData === hoje) {
-    desativarBotao();
-  }
-
-  verificarConclusaoTotal();
+  atualizarBotao();
   btnDesafio.addEventListener("click", completarDesafio);
 });
