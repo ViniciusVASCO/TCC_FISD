@@ -31,20 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function verificarConclusaoTotal() {
     const concluidas = conquistasSalvas.filter(c => c.desbloqueado).length;
 
-    if (concluidas >= 3) {
-
+    if (concluidas === 3) {
         btnDesafio.disabled = true;
         btnDesafio.classList.add("desafio-concluido");
-        btnDesafio.textContent = "Desafios Concluídos ✅";
+        btnDesafio.textContent = "todos os desafios foram completos!";
 
         msgFinal.style.display = "block";
-
         document.querySelector(".descricao-desafio").style.display = "none";
         document.querySelector(".recompensa").style.display = "none";
+    } else {
+        btnDesafio.disabled = false;
+        btnDesafio.classList.remove("desafio-concluido");
+        btnDesafio.textContent = "Completar Desafio";
+        msgFinal.style.display = "none";
     }
 }
 
-  function completarDesafio() {
+ function completarDesafio() {
     const hoje = new Date().toISOString().split("T")[0];
 
     if (ultimaData === hoje) return;
@@ -60,9 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     settings.playCelebrationSound();
 
     renderConquistas();
-    desativarBotao();
     verificarConclusaoTotal();
-  }
+}
 
   function desativarBotao() {
     btnDesafio.disabled = true;
