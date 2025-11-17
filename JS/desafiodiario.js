@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const lista = document.getElementById("conquista-lista");
   const msgFinal = document.getElementById("mensagem-final");
 
+  // Verifica se o botão existe antes de prosseguir
+  if (!btnDesafio) {
+    console.error("Botão 'btn-desafio' não encontrado!");
+    return;
+  }
+
   // Definição das conquistas
   const conquistas = [
     { id: 1, nome: "Iniciante", icone: "🌱", descricao: "Primeiro desafio diário concluído", desbloqueado: false },
@@ -40,8 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
       btnDesafio.classList.remove("desafio-hoje");
       btnDesafio.textContent = "Todos os desafios foram completos!";
       msgFinal.style.display = "block";
-      document.querySelector(".descricao-desafio").style.display = "none";
-      document.querySelector(".recompensa").style.display = "none";
+      const desc = document.querySelector(".descricao-desafio");
+      const rec = document.querySelector(".recompensa");
+      if (desc) desc.style.display = "none";
+      if (rec) rec.style.display = "none";
       return;
     }
 
@@ -62,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Função que marca a conquista do dia
   function completarDesafio() {
+    console.log("Botão clicado!"); // log para teste
     const hoje = new Date().toISOString().split("T")[0];
 
     if (ultimaData === hoje) {
@@ -75,12 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (proxima) {
       proxima.desbloqueado = true;
-      Soltarconfete(); // chama animação de confete
+      // Verifica se a função Soltarconfete existe antes de chamar
+      if (typeof Soltarconfete === "function") {
+        Soltarconfete();
+      }
     }
 
     // Checa se todas as conquistas foram concluídas
     const todasConcluidas = conquistasSalvas.every(c => c.desbloqueado);
-    if (todasConcluidas) {
+    if (todasConcluidas && typeof Soltarconfete === "function") {
       Soltarconfete();
     }
 
@@ -96,5 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicialização da tela
   renderConquistas();
   atualizarBotao();
+
+  // Eventos para desktop e mobile
   btnDesafio.addEventListener("click", completarDesafio);
+  btnDesafio.addEventListener("touchend", completarDesafio);
 });
