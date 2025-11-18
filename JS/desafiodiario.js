@@ -89,7 +89,7 @@
       atualizarBotao();
     }
 
-    // Delegação de evento (funciona no desktop e mobile, mesmo com botão desabilitado)
+    
     document.addEventListener("click", (e) => {
       if (e.target && e.target.id === "btn-desafio") {
         completarDesafio();

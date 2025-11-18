@@ -148,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (!palavra.split("").some(ch => !acertos.includes(ch))) {
                             mensagem.textContent = "🎉 Acertou! Próxima rodada...";
                             soltarConfetes();
-                            settings.playCelebrationSound(); 
-                            settings.mostrarConfetesComSom();
-                            atualizarScore(50);
+                            atualizarScore(20);
                             rodadaForca++;
                             document.querySelectorAll(".btn-letra.forca-btn").forEach(b => b.disabled = true);
                             setTimeout(() => iniciarForca(), 1100);
@@ -273,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         c.style.border = "2px solid #40c449ff";
                     });
                     encontrados.add(encontradaExata);
-                    atualizarScore(30);
+                    atualizarScore(20);
                     currentSelection = [];
                     if (encontrados.size === palavras.length) {
                         resultado.textContent = "🎉 Você encontrou todas as palavras!";
@@ -287,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!isPrefixValid) {
                     currentSelection.forEach(c => {
                         c.classList.add("invalid");
-                        c.style.background = "#e74c3c"; // fundo vermelho temporário
+                        c.style.background = "#e74c3c";
                         c.style.border = "2px solid #e74c3c";
                     });
                     atualizarScore(-2);
