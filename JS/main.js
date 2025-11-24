@@ -106,6 +106,9 @@ class NewtonApp {
         this.highContrast = !this.highContrast;
         document.body.classList.toggle('high-contrast', this.highContrast);
 
+        localStorage.setItem("altoContraste",
+        document.body.classList.contains("alto-contraste")
+    );
         const contrastText = document.getElementById('contrast-text');
         contrastText.textContent = this.highContrast ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste';
 
@@ -212,8 +215,12 @@ class NewtonApp {
             const settings = JSON.parse(localStorage.getItem('newton-app-settings') || '{}');
 
             if (settings.highContrast) {
-                this.toggleContrast();
-            }
+            this.highContrast = true; // define o estado
+            document.body.classList.add('high-contrast'); // aplica a classe
+            const contrastText = document.getElementById('contrast-text');
+            if (contrastText) contrastText.textContent = 'Desativar Alto Contraste';
+        }
+
 
             if (settings.fontSize && settings.fontSize !== 'normal') {
                 this.fontSize = 'normal';

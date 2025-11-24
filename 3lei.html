@@ -175,8 +175,11 @@ img.bola {
         </iframe>
     </div>
     </div>
-
+    <script src="JS/global.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            settings.loadSettings();
+        });
         const openBtn = document.getElementById('open-video');
         const closeBtn = document.getElementById('close-video');
         const modal = document.getElementById('video-modal');

@@ -353,3 +353,57 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+#grid {
+    display: grid;
+    gap: 6px;
+    justify-content: center;
+    padding: 18px 0;
+}
+
+/* CELULAS DO CAÇA PALAVRAS */
+.letter-cell {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(147, 51, 234, 0.5);
+    border: 2px solid rgba(147, 51, 234, 0.8);
+    transition: 0.2s;
+    user-select: none;
+}
+
+/* --- DESKTOP --- */
+@media (min-width: 768px) {
+    #grid {
+        grid-template-columns: repeat(9, 52px);   /* mais ALTO */
+        grid-template-rows: repeat(11, 52px);
+    }
+
+    .letter-cell {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+}
+
+/* --- CELULAR --- */
+@media (max-width: 767px) {
+    #grid {
+        grid-template-columns: repeat(11, 32px);
+        grid-template-rows: repeat(9, 40px);
+    }
+
+    .letter-cell {
+        width: 35px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+
+
+

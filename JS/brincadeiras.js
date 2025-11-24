@@ -178,16 +178,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // =======================
    function iniciarCacaPalavras() {
     const palavras = ["INERCIA","FORCA","ACAO","REACAO","MOVIMENTO"];
-    const tamanho = 10;
-    const tabuleiro = Array.from({ length: tamanho }, () => Array(tamanho).fill(""));
+    const linhas = 9;
+    const colunas = 11;
+    const tabuleiro = Array.from({ length: linhas }, () => Array(colunas).fill(""));
+
 
     palavras.forEach(palavra => {
         let tentativas = 0;
         let colocado = false;
         while(!colocado && tentativas < 200) {
             tentativas++;
-            const linha = Math.floor(Math.random() * tamanho);
-            const inicio = Math.floor(Math.random() * (tamanho - palavra.length + 1));
+        const linha = Math.floor(Math.random() * linhas);
+        const inicio = Math.floor(Math.random() * (colunas - palavra.length + 1));
             let ok = true;
             for (let i = 0; i < palavra.length; i++) {
                 const c = tabuleiro[linha][inicio + i];
@@ -203,19 +205,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for (let i = 0; i < tamanho; i++)
-        for (let j = 0; j < tamanho; j++)
+    for (let i = 0; i < linhas; i++)
+        for (let j = 0; j < colunas; j++)
             if (tabuleiro[i][j] === "") tabuleiro[i][j] = letras.charAt(Math.floor(Math.random() * letras.length));
 
     const listaPalavras = palavras.join(", ");
 
-    gameContent.innerHTML = `
-        <div style="text-align:center;margin-bottom:12px;">
-            <p style="color:#e6e6e6;margin-top:8px;">Palavras: <strong style="color:#fff">${listaPalavras}</strong></p>
-        </div>
-        <div id="grid" style="display:grid; grid-template-columns:repeat(${tamanho},50px); gap:8px; justify-content:center;padding:18px;"></div>
-        <p id="resultado" style="margin-top:12px;font-weight:bold;color:white;text-align:center;"></p>
+   gameContent.innerHTML = `
+
+        <div class="word-info" style="text-align:center; margin-bottom:12px;">
+        <p style="color:#e6e6e6; margin-top:8px; font-size:16px;">Palavras:</p>
+        <strong style="color:#fff; display:block; text-align:center; font-size:18px;">
+            ${listaPalavras}
+        </strong>
+    </div>
+        <div id="grid"></div>
+
+        <p id="resultado" style="text-align:center;color:white;font-weight:bold;margin-top:10px;"></p>
+
     `;
+
 
     const grid = document.getElementById("grid");
     const resultado = document.getElementById("resultado");
@@ -238,8 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cell.style.justifyContent = "center";
             cell.style.fontWeight = "700";
             cell.style.fontSize = "18px";
-            cell.style.width = "50px";
-            cell.style.height = "50px";
             cell.style.borderRadius = "6px";
             cell.style.background = "rgba(147, 51, 234, 0.5)";
             cell.style.border = "2px solid rgba(147, 51, 234, 0.8)";
@@ -273,12 +280,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     encontrados.add(encontradaExata);
                     atualizarScore(20);
                     currentSelection = [];
-                    if (encontrados.size === palavras.length) {
-                        resultado.textContent = "🎉 Você encontrou todas as palavras!";
-                        soltarConfetes();
-                        settings.playCelebrationSound();
+                  if (encontrados.size === palavras.length) {
+                    resultado.textContent = "🎉 Você encontrou todas as palavras!";
+                    soltarConfetes();
+                    settings.playCelebrationSound();
                     }
-                    return;
                 }
 
                 const isPrefixValid = palavras.some(p => p.startsWith(selectionString));
@@ -318,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ["Ação", "Reação"],
             ["1ª Lei", "Lei da Inércia"],
             ["3ª Lei", "Toda ação tem reação"],
-            ["Newton", "<img src='img/newton.png' class='carta'>"]
+            ["Newton", "<img src='IMG/newton.png' class='carta'>"]
         ];
 
         let cartas = [];
@@ -329,58 +335,24 @@ document.addEventListener("DOMContentLoaded", () => {
         let memLock = false;
 
         const grid = document.getElementById("memoria-grid");
-        const resultado = document.getElementById("resultado");
         grid.innerHTML = "";
-        grid.style.display = "grid";
-        grid.style.gridTemplateColumns = "repeat(5, 120px)";
-        grid.style.gap = "20px";
-        grid.style.justifyContent = "center";
 
         cartas.forEach(texto => {
             const card = document.createElement("div");
             card.className = "memory-card";
             const valorCarta = texto.includes("newton.png") ? "Newton" : texto;
             card.dataset.valor = valorCarta;
-            card.style.perspective = "1000px";
 
             const inner = document.createElement("div");
             inner.className = "memory-card-inner";
-            inner.style.transition = "transform 0.6s";
-            inner.style.transformStyle = "preserve-3d";
-            inner.style.width = "120px";
-            inner.style.height = "160px";
-            inner.style.cursor = "pointer";
 
             const front = document.createElement("div");
             front.className = "memory-card-front";
             front.textContent = "?";
-            front.style.position = "absolute";
-            front.style.width = "100%";
-            front.style.height = "100%";
-            front.style.background = "#9333ea";
-            front.style.color = "#fff";
-            front.style.display = "flex";
-            front.style.justifyContent = "center";
-            front.style.alignItems = "center";
-            front.style.borderRadius = "10px";
-            front.style.fontSize = "1.5rem";
-            front.style.backfaceVisibility = "hidden";
 
             const back = document.createElement("div");
             back.className = "memory-card-back";
             back.innerHTML = texto;
-            back.style.position = "absolute";
-            back.style.width = "100%";
-            back.style.height = "100%";
-            back.style.background = "#d946ef";
-            back.style.color = "#fff";
-            back.style.display = "flex";
-            back.style.justifyContent = "center";
-            back.style.alignItems = "center";
-            back.style.borderRadius = "10px";
-            back.style.fontSize = "1rem";
-            back.style.transform = "rotateY(180deg)";
-            back.style.backfaceVisibility = "hidden";
 
             inner.appendChild(front);
             inner.appendChild(back);

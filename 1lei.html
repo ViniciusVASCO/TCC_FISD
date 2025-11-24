@@ -89,8 +89,8 @@ img.inercia-gif {
 }
 
 img.quadrinhos {
-    width: auto !important;
-    max-width: 700px !important;
+    width: 100%;
+    max-width: 700px;
     display: block;
     margin: 1rem auto;
 }
@@ -112,6 +112,13 @@ img.quadrinhos {
 
     p {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    img.quadrinhos {
+        max-width: 90%;  /* ocupa 90% da tela do celular */
+        margin: 0.5rem auto;
     }
 }
 
@@ -166,6 +173,11 @@ img.quadrinhos {
     </div>
 
 </div>
-
+<script src="JS/global.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    settings.loadSettings();
+});
+</script>
 </body>
 </html>
